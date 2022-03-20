@@ -1,8 +1,27 @@
 {% extends 'main.html' %} {% block content %}
-<h1>This is the project detail</h1>
-<p>
-  Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores est illo
-  quidem in debitis vel neque, exercitationem explicabo consequatur ullam
-  suscipit totam quod officia non?
-</p>
+<h1>Projects Page</h1>
+<a href="{% url 'addproject' %}">Add Project</a>
+<table>
+  <tr>
+    <th>Title</th>
+    <!-- <th>description</th> -->
+    <th>Vote</th>
+    <th>Ratio</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+  {% for project in projectslist %}
+  <tr>
+    <td>{{project.title}}</td>
+    <!-- <td>{{project.description}}</td> -->
+    <td>{{project.vote_total}}</td>
+    <td>{{project.vote_ratio}}%</td>
+    <td><a href="{% url 'project' project.id %}">view</a></td>
+    <td><a href="{% url 'deleteproject' project.id %}">delete</a></td>
+    <td><a href="{% url 'updateproject' project.id %}">update</a></td>
+  </tr>
+  {% endfor %}
+</table>
+
 {% endblock%}
