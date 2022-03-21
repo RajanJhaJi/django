@@ -1,7 +1,7 @@
 {% extends 'main.html' %} {% block content %}
 <h3>Add Project</h3>
 
-<form method="POST">
+<form method="POST" enctype="multipart/form-data">
   {% csrf_token %} {% for field in form %}
 
   <div>{{field.label}}</div>
